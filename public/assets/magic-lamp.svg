@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%" fill="none">
+  <defs>
+    <!-- Main lamp body gradient (Deep rich blues to bright cyans) -->
+    <linearGradient id="lampGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a5f3fc" /> <!-- Cyan-200 -->
+      <stop offset="25%" stop-color="#38bdf8" /> <!-- Sky-400 -->
+      <stop offset="60%" stop-color="#1d4ed8" /> <!-- Blue-700 -->
+      <stop offset="100%" stop-color="#1e1b4b" /> <!-- Indigo-950 -->
+    </linearGradient>
+
+    <!-- Handle & Accent gradient -->
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#60a5fa" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
+
+    <!-- Intense glow filter for the spark tip -->
+    <filter id="magicGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur1" />
+      <feGaussianBlur in="SourceGraphic" stdDeviation="15" result="blur2" />
+      <feMerge>
+        <feMergeNode in="blur2" />
+        <feMergeNode in="blur1" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Drop shadow for the overall lamp shape -->
+    <filter id="lampShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#3b82f6" flood-opacity="0.3" />
+    </filter>
+  </defs>
+
+  <!-- Ambient lamp glow backdrop -->
+  <circle cx="256" cy="256" r="160" fill="#3b82f6" opacity="0.08" filter="blur(40px)" />
+
+  <g filter="url(#lampShadow)">
+    <!-- Connection Neck/Stem to Base -->
+    <path d="M 230 350 L 282 350 L 270 380 L 242 380 Z" fill="url(#lampGrad)" stroke="#1e293b" stroke-width="4" stroke-linejoin="round" />
+
+    <!-- Lamp Base -->
+    <path d="M 190 380 C 190 380, 210 395, 256 395 C 302 395, 322 380, 322 380 L 312 405 C 312 405, 290 410, 256 410 C 222 410, 200 405, 200 405 Z" fill="url(#lampGrad)" stroke="#1e293b" stroke-width="4" stroke-linejoin="round" />
+
+    <!-- Handle -->
+    <!-- Large loop connecting back of body to base area or body center -->
+    <path d="M 160 250 C 90 200, 70 310, 140 320 C 160 322, 172 315, 175 305 C 178 290, 160 286, 150 286 C 115 286, 125 240, 170 255 Z" fill="url(#accentGrad)" stroke="#1e293b" stroke-width="4" stroke-linejoin="round" />
+    
+    <!-- Lamp Body (Main oil container) -->
+    <path d="M 160 240 C 140 240, 140 350, 240 350 C 340 350, 310 270, 330 250 C 350 230, 250 240, 160 240 Z" fill="url(#lampGrad)" stroke="#1e293b" stroke-width="4" stroke-linejoin="round" />
+
+    <!-- Lid / Cap -->
+    <!-- Lid base -->
+    <path d="M 215 241 C 215 230, 275 230, 275 241 Z" fill="url(#accentGrad)" stroke="#1e293b" stroke-width="4" />
+    <!-- Lid knob -->
+    <path d="M 235 220 C 235 210, 255 210, 255 220 L 250 230 L 240 230 Z" fill="url(#lampGrad)" stroke="#1e293b" stroke-width="3" />
+    <circle cx="245" cy="208" r="6" fill="#fbbf24" stroke="#1e293b" stroke-width="3" />
+
+    <!-- Long Spout -->
+    <!-- Beautiful elegant curve upwards to the right -->
+    <path d="M 315 258 C 360 270, 420 280, 470 235 C 440 255, 370 252, 328 248 Z" fill="url(#lampGrad)" stroke="#1e293b" stroke-width="4" stroke-linejoin="round" />
+
+    <!-- Metallic shine highlights (Glow overlay paths) -->
+    <path d="M 180 255 C 160 265, 165 330, 220 338" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.4" />
+    <path d="M 370 258 C 400 262, 430 258, 452 245" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.5" />
+    <path d="M 215 390 C 235 393, 277 393, 297 390" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.3" />
+  </g>
+
+  <!-- Spark / Magic Light Glow from the Spout -->
+  <g filter="url(#magicGlow)">
+    <!-- Star core -->
+    <path d="M 470 235 Q 470 220 480 220 Q 470 220 470 205 Q 470 220 460 220 Q 470 220 470 235 Z" fill="#ffffff" />
+    <!-- Tiny satellite sparkles -->
+    <circle cx="488" cy="202" r="3" fill="#fbbf24" />
+    <circle cx="445" cy="245" r="2.5" fill="#38bdf8" />
+  </g>
+</svg>
