@@ -600,7 +600,104 @@ a.inline-flex, button.inline-flex {
 }
 
 /* Flex display additions */
+
 .hidden { display: none; }
 
 /* Overflow hidden */
 .overflow-hidden { overflow: hidden; }
+
+/* Light Content Theme Overrides */
+body.light-content-theme .how-section,
+body.light-content-theme .markets-section,
+body.light-content-theme .persp-section,
+body.light-content-theme .faq-section {
+  background: #ffffff !important;
+}
+
+body.light-content-theme .feature-panel-section h3,
+body.light-content-theme .feature-panel-section h4,
+body.light-content-theme .feature-panel-section p,
+body.light-content-theme .feature-panel-section .text-foreground,
+body.light-content-theme .feature-panel-section .text-foreground\/90,
+body.light-content-theme .feature-panel-section .text-foreground\/80,
+body.light-content-theme .persp-section h3,
+body.light-content-theme .persp-section h4,
+body.light-content-theme .persp-section h5,
+body.light-content-theme .persp-section p,
+body.light-content-theme .persp-section .text-foreground,
+body.light-content-theme .persp-section .persp-card-title,
+body.light-content-theme .persp-section .persp-read-link,
+body.light-content-theme .persp-section .library-heading,
+body.light-content-theme .persp-section .lib-title,
+body.light-content-theme .persp-section .lib-link,
+body.light-content-theme .faq-section h3,
+body.light-content-theme .faq-section h4,
+body.light-content-theme .faq-section .faq-heading,
+body.light-content-theme .faq-section .faq-question {
+  color: #0f172a !important;
+}
+
+body.light-content-theme .feature-panel-section .text-muted-foreground,
+body.light-content-theme .persp-section .text-muted-foreground,
+body.light-content-theme .persp-section .persp-card-desc,
+body.light-content-theme .persp-section .library-desc,
+body.light-content-theme .persp-section .lib-desc,
+body.light-content-theme .faq-section .faq-answer,
+body.light-content-theme .faq-section .faq-answer-inner,
+body.light-content-theme .tab-btn {
+  color: #475569 !important;
+}
+
+body.light-content-theme .tab-btn[data-state=active] {
+  color: #0f172a !important;
+}
+
+body.light-content-theme .feature-panel-section .line-indicator,
+body.light-content-theme .persp-section .line-indicator {
+  background: #3b82f6 !important;
+}
+
+/* Light cards */
+body.light-content-theme .glass-card,
+body.light-content-theme .persp-card,
+body.light-content-theme .lib-card {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+body.light-content-theme .glass-card:hover,
+body.light-content-theme .persp-card:hover,
+body.light-content-theme .lib-card:hover {
+  background: #ffffff !important;
+  border-color: rgba(37, 99, 235, 0.3) !important;
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* FAQ item light mode */
+body.light-content-theme .faq-item {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+}
+body.light-content-theme .faq-item:hover {
+  background: #ffffff !important;
+  border-color: rgba(37, 99, 235, 0.3) !important;
+}
+body.light-content-theme .faq-item--open {
+  background: #eff6ff !important;
+  border-color: #3b82f6 !important;
+}
+body.light-content-theme .faq-item--open .faq-question {
+  color: #1d4ed8 !important;
+}
+
+/* Fix text within elements that are explicitly dark like video */
+body.light-content-theme .video-container-box .text-foreground {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+body.light-content-theme .slider-fade-left {
+  background: linear-gradient(to right, #ffffff, transparent) !important;
+}
+body.light-content-theme .slider-fade-right {
+  background: linear-gradient(to left, #ffffff, transparent) !important;
+}

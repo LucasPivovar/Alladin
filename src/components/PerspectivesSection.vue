@@ -256,7 +256,7 @@ export default {
 .persp-section {
   position: relative;
   padding: 6rem 40px;
-  background: linear-gradient(180deg, #0A1329 0%, #0A1329 85%, #030712 100%);
+  background: #030712;
   border-top: none;
 }
 @media (min-width: 768px) { 
@@ -272,7 +272,7 @@ export default {
   gap: 1.5rem;
   margin-bottom: 3rem;
   padding-bottom: 2rem;
-  border-bottom: 1px solid rgba(59, 130, 246, 0.12);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 @media (min-width: 768px) {
   .persp-header {
@@ -344,13 +344,13 @@ export default {
   flex-direction: column; 
   text-decoration: none; 
   cursor: pointer; 
-  background: rgba(255,255,255,.015);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255,255,255,.03);
+  background: rgba(255,255,255,0.015);
+  border: 1px solid rgba(255,255,255,0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-radius: 24px;
   padding: 1.25rem;
-  transition: border-color 0.4s ease, transform 0.4s ease, background 0.4s ease;
+  transition: border-color 0.4s ease, transform 0.4s ease, background 0.4s ease, box-shadow 0.4s ease;
   position: relative;
   overflow: hidden;
   z-index: 1;
@@ -360,7 +360,7 @@ export default {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: radial-gradient(400px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(37, 99, 235, 0.2), transparent 40%);
+  background: radial-gradient(400px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(37, 99, 235, 0.05), transparent 40%);
   opacity: 0;
   transition: opacity 0.4s;
   pointer-events: none;
@@ -372,8 +372,8 @@ export default {
 }
 
 .persp-card:hover {
-  border-color: rgba(37,99,235,.3);
-  background: rgba(255,255,255,.025);
+  border-color: rgba(37, 99, 235, 0.3);
+  background: rgba(255,255,255,0.025);
   transform: translateY(-4px);
   box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255,255,255,0.05);
 }
@@ -381,7 +381,7 @@ export default {
 .persp-img-wrap {
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  background-color: rgba(30, 41, 59, 0.6);
+  background-color: rgba(30, 41, 59, 0.1);
   margin-bottom: 2rem;
   border-radius: 12px;
 }
@@ -395,11 +395,12 @@ export default {
 .persp-card-tag {
   font-size: 10px; font-weight: 600; letter-spacing: 0.28em;
   text-transform: uppercase; margin-bottom: 0.85rem; display: block;
+  color: #64748b;
 }
 
 .persp-card-title {
-  font-family: var(--font-sans); font-size: 1.2rem; font-weight: 300;
-  color: rgba(255,255,255,0.9); margin-bottom: 1rem; line-height: 1.4;
+  font-family: var(--font-sans); font-size: 1.2rem; font-weight: 600;
+  color: hsl(var(--foreground)); margin-bottom: 1rem; line-height: 1.4;
   transition: color 0.3s;
 }
 @media (min-width: 640px) { .persp-card-title { font-size: 1.35rem; } }
@@ -407,7 +408,7 @@ export default {
 
 .persp-card-desc {
   font-size: 0.875rem; color: hsl(var(--muted-foreground));
-  font-weight: 300; line-height: 1.65; margin-bottom: 1.5rem; flex: 1;
+  font-weight: 400; line-height: 1.65; margin-bottom: 1.5rem; flex: 1;
 }
 
 .persp-read-link {
@@ -422,7 +423,7 @@ export default {
 /* ── Library expand section ──────────────────── */
 .library-section {
   margin-top: 5rem;
-  border-top: 1px solid rgba(59, 130, 246, 0.12);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
   padding-top: 3rem;
 }
 @media (min-width: 640px) { .library-section { margin-top: 6rem; padding-top: 3.5rem; } }
@@ -443,7 +444,7 @@ export default {
 
 .library-desc {
   font-size: 0.875rem; color: hsl(var(--muted-foreground));
-  font-weight: 300; line-height: 1.65;
+  font-weight: 400; line-height: 1.65;
 }
 
 /* Library card slider */
@@ -472,7 +473,7 @@ export default {
 }
 .slider-fade-left {
   left: 0;
-  background: linear-gradient(to right, #0A1329, transparent);
+  background: linear-gradient(to right, #030712, transparent);
 }
 .slider-fade-right {
   right: 0;
@@ -485,24 +486,25 @@ export default {
   flex-shrink: 0;
   scroll-snap-align: start;
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255,255,255,0.03);
   display: flex;
   flex-direction: column;
   padding: 1.5rem 1.75rem;
-  background: rgba(255,255,255,.015);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background: rgba(255,255,255,0.015);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   text-decoration: none;
-  transition: background-color 0.4s ease, border-color 0.4s ease, transform 0.4s ease;
+  transition: background-color 0.4s ease, border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
   position: relative;
   overflow: hidden;
   z-index: 1;
 }
 @media (min-width: 640px) { .lib-card { padding: 1.75rem; min-width: 340px; } }
 .lib-card:hover {
-  background: rgba(255,255,255,.025);
+  background: rgba(255,255,255,0.025);
+  border-color: rgba(37, 99, 235, 0.3);
   transform: translateY(-2px);
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255,255,255,0.05);
 }
 
 .lib-card-top {
@@ -517,7 +519,7 @@ export default {
 
 .lib-source {
   font-size: 9px; letter-spacing: 0.2em;
-  text-transform: uppercase; color: hsl(var(--muted-foreground));
+  text-transform: uppercase; color: #64748b;
 }
 
 .lib-title {
@@ -530,7 +532,7 @@ export default {
 
 .lib-desc {
   font-size: 0.8125rem; color: hsl(var(--muted-foreground));
-  font-weight: 300; line-height: 1.65; flex: 1; margin-bottom: 1.25rem;
+  font-weight: 400; line-height: 1.65; flex: 1; margin-bottom: 1.25rem;
 }
 
 .lib-link {

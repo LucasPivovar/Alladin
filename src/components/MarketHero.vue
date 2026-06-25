@@ -113,51 +113,77 @@
     <!-- Gradient Radial Overlay centered under copy text -->
     <div class="pointer-events-none absolute inset-0" style="background: radial-gradient(ellipse 55% 50% at 25% 35%, hsl(var(--background) / 0.65), transparent 65%);"></div>
 
-    <!-- DESKTOP ORBITAL LIGHT CONCENTRIC RINGS AND LAMP (Interactive Parallax) -->
-    <div class="absolute hidden md:block orbit-container" :style="orbitStyle">
-      <div class="relative w-[29rem] h-[29rem] lg:w-[36rem] lg:h-[36rem]">
-        <!-- Inner Blur Glow -->
-        <div class="absolute inset-0 rounded-full bg-primary/25" style="filter: blur(80px); transform: translateZ(0px);"></div>
-        
-        <!-- Concentric Orbit Ring 1 -->
-        <div class="absolute inset-0 rounded-full border border-primary/15 orbit-ring-1"></div>
-        
-        <!-- Concentric Orbit Ring 2 -->
-        <div class="absolute -inset-10 rounded-full border border-primary/10 orbit-ring-2"></div>
-        
-        <!-- Concentric Orbit Ring 3 -->
-        <div class="absolute -inset-24 rounded-full border border-primary/5 orbit-ring-3"></div>
-        
-        <!-- Concentric Orbit Ring 4 -->
-        <div class="absolute -inset-40 rounded-full border border-primary/[0.04] orbit-ring-4"></div>
-        
-        <!-- Orbit Satellite Nodes / Dots -->
-        <div class="absolute inset-0 rounded-full">
-          <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-primary shadow-[0_0_16px_hsl(var(--primary))] shadow-primary-glow"></div>
+    <!-- DESKTOP TRADING CHART CARD -->
+    <div class="absolute hidden md:flex orbit-container justify-center items-center" :style="orbitStyle">
+      <div class="relative flex items-center justify-center">
+        <!-- The glass chart card (Wider and taller, with inner padding) -->
+        <div class="relative w-[36rem] h-[22rem] lg:w-[48rem] lg:h-[25rem] flex flex-col rounded-2xl overflow-hidden glass-chart-card border border-primary/40 shadow-[0_0_60px_-15px_rgba(37,99,235,0.4)] bg-[#030712]/80 backdrop-blur-xl z-10 p-4">
+          <!-- Custom Chart Header -->
+          <div class="flex items-center justify-between mb-3 px-2">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-8 h-8">
+                  <circle cx="16" cy="16" r="16" fill="#F7931A"/>
+                  <path fill="#FFF" d="M21.78 15.37c.51-3.3-1.95-5.11-5.32-6.27l1.09-4.37-2.66-.66-1.06 4.26c-.7-.17-1.42-.33-2.15-.49l1.07-4.28-2.66-.66-1.08 4.35c-.58-.13-1.15-.26-1.7-.4l-3.65-.91-.7 2.82s1.96.45 1.92.48c1.07.27 1.26.97 1.23 1.53l-1.23 4.93c.12.03.28.08.47.16l-.48-.12-1.72 6.9c-.14.34-.5.85-1.31.65.03.04-1.93-.48-1.93-.48l-1.33 3.08 3.46.86c.64.16 1.27.33 1.9.48l-1.1 4.41 2.66.66 1.08-4.35c.73.2 1.44.38 2.14.56l-1.08 4.36 2.66.66 1.1-4.42c3.83.73 6.72.44 7.9-3 .95-2.76-.04-4.36-2.05-5.4 1.46-.34 2.56-1.28 2.85-3.24zm-4.3 6.64c-.81 3.23-6.25 1.49-8.02 1.05l1.43-5.74c1.77.44 7.42 1.34 6.59 4.69zm.84-8.39c-.74 2.98-5.34 1.45-6.83 1.08l1.29-5.19c1.49.37 6.3 1.02 5.54 4.11z"/>
+                </svg>
+              </div>
+              <div>
+                <h5 class="text-white font-bold text-lg leading-none mb-1">Bitcoin <span class="text-muted-foreground text-sm font-medium">BTC/USDT</span></h5>
+                <p class="text-[9px] text-emerald-400 font-bold uppercase tracking-widest leading-none drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]">Sinal de Compra Forte</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.8)]"></span>
+              <span class="text-[10px] text-muted-foreground font-bold uppercase tracking-widest">Ao Vivo</span>
+            </div>
+          </div>
+          <!-- TradingView Widget Container -->
+          <div class="tradingview-widget-container flex-1 w-full relative">
+            <div id="tradingview_chart" class="absolute inset-0"></div>
+          </div>
         </div>
-        <div class="absolute -inset-10 orbit-ring-fast">
-          <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-amber-400 shadow-[0_0_12px_hsl(45,90%,60%)] shadow-amber-glow"></div>
+
+        <!-- Floating bubbles -->
+        <div class="absolute -top-6 -left-8 lg:-left-12 z-20 bg-[#071126] border border-amber-500/40 text-white text-xs font-bold px-4 py-2 rounded-full shadow-[0_0_20px_rgba(245,158,11,0.3)] animate-float-d1" style="animation-delay: 0s;">
+          <span class="text-amber-500 mr-1 drop-shadow-[0_0_5px_rgba(245,158,11,0.8)]">●</span> Criptomoedas
         </div>
-        
-        <!-- Magic Lamp Centerpiece (extra parallax translation for 3D depth) -->
-        <div class="absolute inset-16 animate-float-slow lamp-wrapper" :style="lampDepthStyle">
-          <img :src="magicLamp" alt="Aladdin Magic Lamp" aria-hidden="true" decoding="async" loading="eager" class="w-full h-full object-contain opacity-95 filter-glow" />
+        <div class="absolute -bottom-8 right-6 lg:right-12 z-20 bg-[#071126] border border-emerald-400/40 text-white text-xs font-bold px-4 py-2 rounded-full shadow-[0_0_20px_rgba(16,185,129,0.3)] animate-float-d2" style="animation-delay: 1.5s;">
+          <span class="text-emerald-400 mr-1 drop-shadow-[0_0_5px_rgba(16,185,129,0.8)]">●</span> Forex
         </div>
-        
-        <!-- Outer Pulsing Rings -->
-        <div class="absolute inset-16 rounded-full border border-primary/40 animate-pulse-ring"></div>
-        <div class="absolute inset-16 rounded-full border border-primary/30 animate-pulse-ring" style="animation-delay: 1.2s;"></div>
+        <div class="absolute top-[35%] -right-10 lg:-right-14 z-20 bg-[#071126] border border-fuchsia-400/40 text-white text-xs font-bold px-4 py-2 rounded-full shadow-[0_0_20px_rgba(217,70,239,0.3)] animate-float-d3" style="animation-delay: 0.7s;">
+          <span class="text-fuchsia-400 mr-1 drop-shadow-[0_0_5px_rgba(217,70,239,0.8)]">●</span> Índices
+        </div>
       </div>
     </div>
 
-    <!-- MOBILE MAGIC LAMP & GLOW BACKDROP (Simplified for mobile performance) -->
-    <div class="md:hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[26rem] h-[26rem] opacity-30 mobile-lamp">
-      <div class="absolute inset-0 rounded-full bg-primary/30" style="filter: blur(60px);"></div>
-      <img :src="magicLamp" alt="Aladdin Magic Lamp" aria-hidden="true" decoding="async" class="absolute inset-10 w-[calc(100%-5rem)] h-[calc(100%-5rem)] object-contain animate-float-slow">
+    <!-- MOBILE TRADING CHART CARD (Simplified for mobile performance) -->
+    <div class="md:hidden absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[95%] h-[20rem] flex flex-col rounded-xl overflow-hidden border border-primary/20 shadow-[0_0_30px_-10px_rgba(37,99,235,0.3)] bg-[#030712]/80 backdrop-blur-md opacity-90 mobile-lamp p-3">
+      <!-- Mobile Chart Header -->
+      <div class="flex items-center justify-between mb-2 px-1">
+        <div class="flex items-center gap-2">
+          <div class="w-6 h-6 rounded-full flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-6 h-6">
+              <circle cx="16" cy="16" r="16" fill="#F7931A"/>
+              <path fill="#FFF" d="M21.78 15.37c.51-3.3-1.95-5.11-5.32-6.27l1.09-4.37-2.66-.66-1.06 4.26c-.7-.17-1.42-.33-2.15-.49l1.07-4.28-2.66-.66-1.08 4.35c-.58-.13-1.15-.26-1.7-.4l-3.65-.91-.7 2.82s1.96.45 1.92.48c1.07.27 1.26.97 1.23 1.53l-1.23 4.93c.12.03.28.08.47.16l-.48-.12-1.72 6.9c-.14.34-.5.85-1.31.65.03.04-1.93-.48-1.93-.48l-1.33 3.08 3.46.86c.64.16 1.27.33 1.9.48l-1.1 4.41 2.66.66 1.08-4.35c.73.2 1.44.38 2.14.56l-1.08 4.36 2.66.66 1.1-4.42c3.83.73 6.72.44 7.9-3 .95-2.76-.04-4.36-2.05-5.4 1.46-.34 2.56-1.28 2.85-3.24zm-4.3 6.64c-.81 3.23-6.25 1.49-8.02 1.05l1.43-5.74c1.77.44 7.42 1.34 6.59 4.69zm.84-8.39c-.74 2.98-5.34 1.45-6.83 1.08l1.29-5.19c1.49.37 6.3 1.02 5.54 4.11z"/>
+            </svg>
+          </div>
+          <div>
+            <h5 class="text-white font-bold text-[14px] leading-none mb-1">Bitcoin <span class="text-muted-foreground text-[10px] font-medium">BTC/USDT</span></h5>
+            <p class="text-[8px] text-emerald-400 font-bold uppercase tracking-widest leading-none drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]">Compra Forte</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.8)]"></span>
+          <span class="text-[8px] text-muted-foreground font-bold uppercase tracking-widest">Ao Vivo</span>
+        </div>
+      </div>
+      <div class="tradingview-widget-container pointer-events-none flex-1 w-full relative">
+        <div id="tradingview_chart_mobile" class="absolute inset-0"></div>
+      </div>
     </div>
 
     <!-- HERO CONTENT CONTAINER -->
-    <div class="relative w-full px-4 sm:px-8 lg:px-14 pt-16 sm:pt-24 pb-20 sm:pb-28 content-layer">
+    <div class="relative w-full px-4 sm:px-12 lg:px-24 xl:px-40 pt-16 sm:pt-24 pb-20 sm:pb-28 content-layer">
       <div class="max-w-3xl mr-auto content-left">
         <!-- Subheading badge line -->
         <div class="flex items-center gap-3 mb-7 sm:mb-10 hero-eyebrow-el">
@@ -166,8 +192,8 @@
         </div>
         
         <h2 class="font-serif-display text-[3rem] leading-[0.95] sm:text-7xl md:text-8xl text-foreground mb-7 sm:mb-9 hero-title-el main-title font-extrabold">
-          Sua lâmpada<br />mágica<br />
-          <em class="italic bg-clip-text text-transparent title-gradient">do mercado.</em>
+          Terminal<br />
+          <em class="italic bg-clip-text text-transparent title-gradient">Institucional.</em>
         </h2>
         
         <!-- Core Description Copy -->
@@ -327,6 +353,33 @@ export default {
           0.3
         )
       })
+
+      // Initialize TradingView Widget
+      const script = document.createElement('script')
+      script.src = 'https://s3.tradingview.com/tv.js'
+      script.async = true
+      script.onload = () => {
+        if (window.TradingView) {
+          const config = {
+            "autosize": true,
+            "symbol": "BINANCE:BTCUSDT",
+            "interval": "60",
+            "timezone": "Etc/UTC",
+            "theme": "dark",
+            "style": "1",
+            "locale": "br",
+            "enable_publishing": false,
+            "backgroundColor": "rgba(3, 7, 18, 0)",
+            "gridColor": "rgba(59, 130, 246, 0.08)",
+            "hide_top_toolbar": true,
+            "hide_legend": true,
+            "save_image": false,
+          }
+          new window.TradingView.widget({ ...config, "container_id": "tradingview_chart" });
+          new window.TradingView.widget({ ...config, "container_id": "tradingview_chart_mobile" });
+        }
+      }
+      document.body.appendChild(script)
     })
 
     onUnmounted(() => {
@@ -448,8 +501,8 @@ export default {
 
 @media (min-width: 1024px) {
   .orbit-container > div {
-    width: 36rem;
-    height: 36rem;
+    width: 52rem;
+    height: 28rem;
   }
 }
 
@@ -654,6 +707,22 @@ export default {
   font-size: 3.5rem;
   color: rgba(255,255,255,0.95);
 }
+
+@keyframes float-dynamic-1 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(6px, -12px); }
+}
+@keyframes float-dynamic-2 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-8px, -8px); }
+}
+@keyframes float-dynamic-3 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(5px, 10px); }
+}
+.animate-float-d1 { animation: float-dynamic-1 5s ease-in-out infinite; }
+.animate-float-d2 { animation: float-dynamic-2 6s ease-in-out infinite; }
+.animate-float-d3 { animation: float-dynamic-3 5.5s ease-in-out infinite; }
 
 @keyframes glow-pulse-anim {
   0%, 100% { opacity: 0.2; transform: scale(0.8); }

@@ -434,11 +434,11 @@ export default {
 }
 
 .bg-lighter {
-  background: linear-gradient(180deg, #030712 0%, #0A1329 15%, #0A1329 85%, #030712 100%) !important;
+  background: #030712 !important;
 }
 
 .bg-darker {
-  background: linear-gradient(180deg, #030712 0%, #030712 85%, #0A1329 100%) !important;
+  background: #030712 !important;
 }
 
 @media (min-width: 768px) {
@@ -578,6 +578,36 @@ export default {
   border-color: rgba(37, 99, 235, 0.3);
   transform: translateY(-2px);
   box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255,255,255,0.05);
+}
+
+.light-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.light-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(400px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(37, 99, 235, 0.05), transparent 40%);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.light-card:hover::before {
+  opacity: 1;
+}
+
+.light-card:hover {
+  background: #ffffff;
+  border-color: rgba(37, 99, 235, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.08);
 }
 
 @keyframes fadeIn {
