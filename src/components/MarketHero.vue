@@ -91,9 +91,18 @@
       <!-- Pan Grid Overlay -->
       <div class="absolute inset-0 opacity-[0.16] animate-grid-pan grid-layer"></div>
       
+      <!-- Subtle Pulsing Glowing Lights -->
+      <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none mix-blend-screen">
+        <div class="absolute top-[15%] left-[20%] w-2 h-2 bg-primary/80 rounded-full animate-glow-pulse" style="animation-delay: 0s; box-shadow: 0 0 25px 8px rgba(37,99,235,0.6);"></div>
+        <div class="absolute top-[45%] right-[25%] w-3 h-3 bg-cyan-400/70 rounded-full animate-glow-pulse" style="animation-delay: 1.5s; box-shadow: 0 0 30px 10px rgba(34,211,238,0.5);"></div>
+        <div class="absolute bottom-[30%] left-[35%] w-2.5 h-2.5 bg-indigo-500/80 rounded-full animate-glow-pulse" style="animation-delay: 0.7s; box-shadow: 0 0 25px 8px rgba(99,102,241,0.6);"></div>
+        <div class="absolute top-[60%] left-[10%] w-1.5 h-1.5 bg-blue-300/80 rounded-full animate-glow-pulse" style="animation-delay: 2.2s; box-shadow: 0 0 15px 5px rgba(147,197,253,0.6);"></div>
+        <div class="absolute bottom-[15%] right-[40%] w-2 h-2 bg-primary/80 rounded-full animate-glow-pulse" style="animation-delay: 0.4s; box-shadow: 0 0 20px 8px rgba(37,99,235,0.6);"></div>
+      </div>
+
       <!-- Glowing Radial Ambient Blobs -->
-      <div class="absolute top-[5%] left-[3%] w-[34rem] h-[34rem] rounded-full opacity-45 animate-drift glow-blob-1"></div>
-      <div class="absolute bottom-[2%] right-[2%] w-[36rem] h-[36rem] rounded-full opacity-40 animate-drift glow-blob-2"></div>
+      <div class="absolute top-[5%] left-[3%] w-[34rem] h-[34rem] rounded-full opacity-20 animate-drift glow-blob-1"></div>
+      <div class="absolute bottom-[2%] right-[2%] w-[36rem] h-[36rem] rounded-full opacity-15 animate-drift glow-blob-2"></div>
       <div class="absolute top-[40%] left-[42%] w-[28rem] h-[28rem] rounded-full opacity-30 animate-drift glow-blob-3"></div>
       <div class="absolute top-[60%] left-[8%] w-[22rem] h-[22rem] rounded-full opacity-30 animate-drift glow-blob-4"></div>
 
@@ -156,7 +165,7 @@
           <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-primary subheading-text">Institutional Grade Intelligence</span>
         </div>
         
-        <h2 class="font-serif-display text-[3rem] leading-[0.95] sm:text-7xl md:text-8xl text-foreground mb-7 sm:mb-9 hero-title-el main-title">
+        <h2 class="font-serif-display text-[3rem] leading-[0.95] sm:text-7xl md:text-8xl text-foreground mb-7 sm:mb-9 hero-title-el main-title font-extrabold">
           Sua lâmpada<br />mágica<br />
           <em class="italic bg-clip-text text-transparent title-gradient">do mercado.</em>
         </h2>
@@ -207,6 +216,9 @@
         </div>
       </div>
     </div>
+    
+    <!-- Bottom fade to blend SVG grid into next section smoothly -->
+    <div class="pointer-events-none absolute inset-x-0 bottom-0 h-40 z-10" style="background: linear-gradient(to top, #030712, transparent);"></div>
   </section>
 </template>
 
@@ -361,13 +373,13 @@ export default {
 
 <style scoped>
 .hero-section {
-  background-color: hsl(var(--background));
+  background-color: #030712;
   min-height: 98vh; /* Stretch to fill full viewport height */
   display: flex;
   align-items: center;
   position: relative;
   overflow: clip; /* clip prevents scrollbar but unlike hidden doesn't create new positioning context */
-  border-bottom: 1px solid rgba(59, 130, 246, 0.08);
+  border-bottom: none;
 }
 
 .svg-background {
@@ -503,8 +515,8 @@ export default {
 
 .filter-glow {
   filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.8)) 
-          drop-shadow(0 0 12px rgba(59, 130, 246, 0.4)) 
-          drop-shadow(0 0 50px rgba(59, 130, 246, 0.65));
+          drop-shadow(0 0 10px rgba(59, 130, 246, 0.2)) 
+          drop-shadow(0 0 30px rgba(59, 130, 246, 0.3));
 }
 
 .arrow-icon {
@@ -538,6 +550,21 @@ export default {
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
   text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary-action::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -150%; width: 100%; height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+  transform: skewX(-20deg);
+  transition: all 0.6s ease;
+}
+
+.btn-primary-action:hover::after {
+  left: 150%;
 }
 
 .btn-primary-action:hover {
@@ -619,12 +646,22 @@ export default {
 
 /* Main title overrides */
 .main-title {
-  max-width: 620px;
+  max-width: 840px;
   font-family: var(--font-sans) !important;
-  font-weight: 700 !important;
-  line-height: 0.95;
-  letter-spacing: -0.02em;
+  font-weight: 800 !important;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
   font-size: 3.5rem;
+  color: rgba(255,255,255,0.95);
+}
+
+@keyframes glow-pulse-anim {
+  0%, 100% { opacity: 0.2; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.4); }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse-anim 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 .content-layer {

@@ -1,42 +1,38 @@
 <template>
-  <section class="relative py-16 sm:py-20 px-6 sm:px-10 lg:px-16 border-t border-border/40 bg-card/20 feature-panel-section" ref="sectionRef">
-    <div class="w-full">
-      <!-- SECTION 1: COMO A IA FUNCIONA -->
-      <div class="mb-12 sm:mb-16 grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+  <div>
+    <!-- SECTION 1: COMO A IA FUNCIONA -->
+    <section class="feature-panel-section bg-lighter how-section">
+      <div class="w-full">
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         <div class="order-2 lg:order-1 how-content-col">
           <div class="flex items-center gap-3 mb-5 how-eyebrow">
             <span class="h-px w-10 bg-primary line-indicator"></span>
             <span class="text-[10px] font-bold tracking-[0.32em] uppercase text-primary">Como a IA funciona</span>
           </div>
-          <h4 class="font-serif-display text-3xl sm:text-5xl lg:text-6xl text-foreground leading-[1.05] mb-8 thinner-heading how-headline">
-            Uma <em class="italic text-primary">leitura institucional</em><br />em segundos.
+          <h4 class="font-sans text-4xl sm:text-5xl md:text-6xl text-foreground/90 font-light leading-[1.1] mb-6">
+            Uma engenharia invisível.<br class="hidden sm:block" />
+            <em class="font-medium not-italic text-primary">Resultados palpáveis.</em>
           </h4>
           <p class="text-xs sm:text-sm text-muted-foreground font-light leading-relaxed mt-3 mb-10 how-desc">
             Envie o print do gráfico — a ALADDIN cruza <strong class="text-foreground/90 font-medium">SMC, Wyckoff, Price Action, RSI e Elliott</strong> em uma única leitura, identifica liquidez varrida, order blocks e momentum, e devolve um veredicto objetivo com entrada, stop e alvo.
           </p>
-          <ul class="space-y-7 text-xs steps-list">
-            <li class="flex items-start gap-3">
-              <span class="font-mono text-[10px] text-primary font-bold tracking-widest mt-1">01</span>
-              <div>
-                <div class="text-foreground font-medium text-[13px]">Envia o print</div>
-                <div class="text-muted-foreground text-[12px] font-light">Cole ou faça upload do gráfico (Ctrl+V)</div>
-              </div>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="font-mono text-[10px] text-primary font-bold tracking-widest mt-1">02</span>
-              <div>
-                <div class="text-foreground font-medium text-[13px]">IA analisa</div>
-                <div class="text-muted-foreground text-[12px] font-light">5 estratégias confluentes em paralelo</div>
-              </div>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="font-mono text-[10px] text-primary font-bold tracking-widest mt-1">03</span>
-              <div>
-                <div class="text-foreground font-medium text-[13px]">Recebe o sinal</div>
-                <div class="text-muted-foreground text-[12px] font-light">Direção · confiança · entrada · stop · alvo</div>
-              </div>
-            </li>
-          </ul>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 steps-grid">
+            <div class="step-card flex flex-col p-5 rounded-xl transition-all glass-card">
+              <span class="font-mono text-[12px] text-primary font-bold tracking-widest mb-2">01</span>
+              <div class="text-foreground font-medium text-[13px] mb-1">Envia o print</div>
+              <div class="text-muted-foreground text-[12px] font-light">Cole ou faça upload do gráfico (Ctrl+V)</div>
+            </div>
+            <div class="step-card flex flex-col p-5 rounded-xl transition-all glass-card">
+              <span class="font-mono text-[12px] text-primary font-bold tracking-widest mb-2">02</span>
+              <div class="text-foreground font-medium text-[13px] mb-1">IA analisa</div>
+              <div class="text-muted-foreground text-[12px] font-light">5 estratégias confluentes em paralelo</div>
+            </div>
+            <div class="step-card flex flex-col p-5 rounded-xl transition-all glass-card">
+              <span class="font-mono text-[12px] text-primary font-bold tracking-widest mb-2">03</span>
+              <div class="text-foreground font-medium text-[13px] mb-1">Recebe o sinal</div>
+              <div class="text-muted-foreground text-[12px] font-light">Direção · confiança · entrada · stop · alvo</div>
+            </div>
+          </div>
         </div>
         
         <!-- Video Showcase Container -->
@@ -52,12 +48,16 @@
           </div>
         </div>
       </div>
+      </div>
+    </section>
 
-      <!-- SECTION 2: GLOBAL MARKETS -->
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 sm:mb-12 text-left items-start markets-header">
+    <!-- SECTION 2: GLOBAL MARKETS -->
+    <section class="feature-panel-section bg-darker markets-section">
+      <div class="w-full">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 sm:mb-12 text-left items-start markets-header">
         <div class="max-w-xl text-left markets-title">
           <h3 class="text-[10px] sm:text-xs font-bold tracking-[0.4em] uppercase text-primary mb-4 text-left">Global Markets</h3>
-          <h4 class="font-serif-display text-3xl sm:text-5xl text-foreground leading-[1.05] thinner-heading text-left" style="text-align:left;">Um motor. <em class="italic text-primary">Todos os mercados.</em></h4>
+          <h4 class="font-sans text-3xl sm:text-5xl text-foreground/90 font-light leading-[1.1] text-left" style="text-align:left;">Um motor. <em class="font-medium not-italic text-primary">Todos os mercados.</em></h4>
         </div>
         <p class="text-sm sm:text-base text-muted-foreground font-light max-w-sm leading-relaxed text-left markets-subtitle" style="text-align:left;">
           Selecione uma classe de ativo abaixo para entender, em profundidade, como a ALADDIN atua em cada mercado.
@@ -110,9 +110,9 @@
                role="tabpanel" 
                class="ring-offset-background focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 mt-0 focus-visible:outline-none tab-panel-wrapper">
             
-            <div class="grid lg:grid-cols-12 gap-8 lg:gap-12">
+            <div class="grid lg:grid-cols-12 gap-8 lg:gap-[60px]">
               <!-- Left side content description -->
-              <div class="lg:col-span-7 panel-content-col">
+              <div class="lg:col-span-6 panel-content-col">
                 <div class="flex items-center gap-3 mb-5 panel-header-el">
                   <div class="icon-bg-wrapper" style="width:2.75rem;height:2.75rem;border-radius:0.25rem;border:1px solid rgba(59,130,246,0.2);background:rgba(59,130,246,0.05);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                     <svg v-if="panel.icon === 'BitcoinIcon'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-primary">
@@ -143,16 +143,16 @@
                     <p class="font-display text-lg font-medium text-foreground">{{ panel.name }}</p>
                   </div>
                 </div>
-                <h5 class="font-serif-display text-3xl sm:text-4xl text-foreground leading-[1.1] mb-6 thinner-heading panel-headline-el">
-                  <em class="italic">{{ panel.title }}</em>
+                <h5 class="font-sans text-2xl sm:text-[26px] text-foreground/90 font-light leading-[1.3] mb-6 panel-headline-el">
+                  {{ panel.title }}
                 </h5>
                 <p class="text-base text-muted-foreground font-light leading-relaxed mb-8 panel-desc-el">
                   {{ panel.description }}
                 </p>
                 <ul class="space-y-3 mb-8 checklist">
                   <li v-for="(item, idx) in panel.checklist" :key="idx" class="flex items-start gap-3 text-sm text-foreground/90 font-light">
-                    <span class="mt-[3px] w-5 h-5 rounded-sm bg-primary/10 border border-primary/30 flex items-center justify-center shrink-0 check-wrapper">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3 text-primary check-icon">
+                    <span class="mt-1 w-4 h-4 flex items-center justify-center shrink-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-primary">
                         <path d="M20 6 9 17l-5-5"></path>
                       </svg>
                     </span>
@@ -162,24 +162,25 @@
               </div>
 
               <!-- Right side Asset Summary Card -->
-              <div class="lg:col-span-5">
-                <div class="bg-card/40 border border-border/60 p-7 sm:p-8 backdrop-blur summary-card">
+              <div class="lg:col-span-6">
+                <div class="p-7 sm:p-8 backdrop-blur rounded-2xl summary-card" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05);">
                   <p class="text-[10px] font-bold uppercase tracking-[0.28em] text-muted-foreground mb-5">Ativos cobertos</p>
-                  <div class="grid grid-cols-2 gap-2 mb-8">
-                    <div v-for="(asset, idx) in panel.assets" :key="idx" class="font-mono text-xs sm:text-sm text-foreground bg-background/60 border border-border/50 px-3 py-2.5 asset-item">
+                  <div class="grid grid-cols-2 gap-3 mb-8">
+                    <div v-for="(asset, idx) in panel.assets" :key="idx" class="font-mono text-xs text-foreground/80 bg-white/5 rounded-lg px-4 py-3 flex items-center justify-center tracking-wide">
                       {{ asset }}
                     </div>
                   </div>
-                  <div class="border-t border-border/60 pt-6">
+                  <div class="border-t border-white/5 pt-6">
                     <p class="text-[10px] font-bold uppercase tracking-[0.28em] text-muted-foreground mb-2">Sessões operacionais</p>
-                    <p class="text-sm text-foreground font-light">{{ panel.sessions }}</p>
+                    <p class="text-sm text-foreground/90 font-light">{{ panel.sessions }}</p>
                   </div>
-                  <div class="border-t border-border/60 pt-6 mt-6">
+                  <div class="border-t border-white/5 pt-6 mt-6">
                     <p class="text-[10px] font-bold uppercase tracking-[0.28em] text-muted-foreground mb-3">Estratégias aplicadas</p>
-                    <div class="flex flex-wrap gap-1.5 badges-wrapper">
-                      <span v-for="(strat, idx) in panel.strategies" :key="idx" class="text-[10px] font-bold uppercase tracking-[0.18em] text-primary bg-primary/10 border border-primary/20 px-2.5 py-1 badge">
-                        {{ strat }}
-                      </span>
+                    <div class="text-[11px] font-medium tracking-[0.1em] uppercase flex flex-wrap gap-2 items-center">
+                      <template v-for="(strat, idx) in panel.strategies" :key="idx">
+                        <span class="text-foreground/80">{{ strat }}</span>
+                        <span v-if="idx < panel.strategies.length - 1" class="text-primary/40">•</span>
+                      </template>
                     </div>
                   </div>
                 </div>
@@ -189,8 +190,9 @@
           </div>
         </div>
       </div>
-    </div>
-  </section>
+      </div>
+    </section>
+  </div>
 </template>
 
 <script>
@@ -204,6 +206,16 @@ export default {
   setup() {
     const sectionRef = ref(null)
     const activeTab = ref('crypto')
+    
+    const handleMouseMove = (e) => {
+      for (const card of document.querySelectorAll('.step-card, .summary-card')) {
+        const rect = card.getBoundingClientRect()
+        const x = e.clientX - rect.left
+        const y = e.clientY - rect.top
+        card.style.setProperty('--mouse-x', `${x}px`)
+        card.style.setProperty('--mouse-y', `${y}px`)
+      }
+    }
 
     const tabsList = ref([
       { id: 'crypto', name: 'Criptomoedas', icon: 'BitcoinIcon' },
@@ -314,6 +326,8 @@ export default {
     }
 
     onMounted(() => {
+      window.addEventListener('mousemove', handleMouseMove)
+
       // Section 1 — Como Funciona (Left content column and right video column rise smoothly together)
       gsap.fromTo(['.how-content-col', '.how-video'],
         { opacity: 0, y: 50 },
@@ -323,12 +337,33 @@ export default {
           duration: 2.8, // Ultra-slow cinematic reveal
           ease: 'power3.out',
           stagger: 0.3, // Long calm lag between column entries
-          scrollTrigger: { trigger: '.feature-panel-section', start: 'top 94%', once: true }
+          scrollTrigger: { trigger: '.how-section', start: 'top 94%', once: true }
         }
       )
 
       // Section 2 — Global Markets header
       st('.markets-header', { from: { y: 40 }, to: { y: 0, duration: 2.6, ease: 'power3.out' } })
+
+       // Steps cards sequential drop animation
+      const cardsTween = gsap.fromTo(
+        '.steps-grid .step-card',
+        { opacity: 0, y: -40, scale: 0.85, boxShadow: '0 0 0 rgba(0,0,0,0)' },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          boxShadow: '0 10px 40px -10px rgba(0,0,0,0.5)',
+          duration: 1.2,
+          ease: 'back.out(1.2)',
+          stagger: 0.25,
+          scrollTrigger: {
+            trigger: '.how-section',
+            start: 'top 85%',
+            once: true
+          }
+        }
+      )
+      if (cardsTween.scrollTrigger) triggers.push(cardsTween.scrollTrigger)
 
       // Tabs bar
       gsap.fromTo('.tab-list-container',
@@ -373,6 +408,7 @@ export default {
     }
 
     onUnmounted(() => {
+      window.removeEventListener('mousemove', handleMouseMove)
       triggers.forEach(t => t && t.kill())
       ScrollTrigger.getAll().forEach(t => t.kill())
     })
@@ -393,9 +429,22 @@ export default {
 .feature-panel-section {
   position: relative;
   z-index: 10;
-  border-top: 1px solid rgba(59, 130, 246, 0.08);
-  padding-left: 40px !important;
-  padding-right: 40px !important;
+  border-top: none;
+  padding: 6rem 40px !important;
+}
+
+.bg-lighter {
+  background: linear-gradient(180deg, #030712 0%, #0A1329 15%, #0A1329 85%, #030712 100%) !important;
+}
+
+.bg-darker {
+  background: linear-gradient(180deg, #030712 0%, #030712 85%, #0A1329 100%) !important;
+}
+
+@media (min-width: 768px) {
+  .feature-panel-section {
+    padding: 8rem 40px !important;
+  }
 }
 
 .line-indicator {
@@ -434,17 +483,47 @@ export default {
   border-color: rgba(59, 130, 246, 0.2) !important;
 }
 
+/* Markets Grid Area */
 .summary-card {
-  background-color: rgba(3, 7, 18, 0.45) !important;
-  border-color: rgba(59, 130, 246, 0.15) !important;
-  box-shadow: 0 15px 35px rgba(3, 7, 18, 0.5);
-  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  background: rgba(255,255,255,0.015) !important;
+  border: 1px solid rgba(255,255,255,0.03) !important;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.summary-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(500px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(37, 99, 235, 0.12), transparent 40%);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.summary-card:hover::before {
+  opacity: 1;
+}
+
+.summary-card:hover {
+  border-color: rgba(37, 99, 235, 0.3) !important;
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255,255,255,0.05);
 }
 
 .asset-item {
-  background-color: rgba(3, 7, 18, 0.3) !important;
-  border-color: rgba(59, 130, 246, 0.08) !important;
-  border-radius: 4px;
+  background-color: #071126 !important;
+  border: 1px solid rgba(37, 99, 235, 0.15) !important;
+  border-radius: 8px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+  cursor: default;
+}
+
+.asset-item:hover {
+  border-color: #2563EB !important;
+  transform: translateY(-1px);
 }
 
 .badge {
@@ -466,6 +545,39 @@ export default {
 /* Animations for tab panels transitions */
 .tab-panel-wrapper {
   animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Como Funciona Steps Grid */
+.glass-card {
+  background: rgba(255,255,255,0.015);
+  border: 1px solid rgba(255,255,255,0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(400px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(37, 99, 235, 0.15), transparent 40%);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.glass-card:hover::before {
+  opacity: 1;
+}
+
+.glass-card:hover {
+  background: rgba(255,255,255,0.025);
+  border-color: rgba(37, 99, 235, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255,255,255,0.05);
 }
 
 @keyframes fadeIn {

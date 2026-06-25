@@ -26,11 +26,11 @@
         <a href="https://finance.yahoo.com/news/ai-trading-flooding-wall-street-165840934.html"
           target="_blank" rel="noopener noreferrer" class="persp-card">
           <div class="persp-img-wrap">
-            <img src="/assets/editorial-ai-wallstreet.jpg"
+            <img src="/assets/hologram_1.png"
               alt="IA inunda Wall Street e impulsiona 1,2 trilhão de mensagens por dia"
               class="persp-img" loading="lazy" />
           </div>
-          <span class="persp-card-tag persp-tag-amber">NYSE · Wall Street</span>
+          <span class="persp-card-tag text-muted-foreground">Institucional</span>
           <h5 class="persp-card-title">IA inunda Wall Street e impulsiona 1,2 trilhão de mensagens por dia</h5>
           <p class="persp-card-desc">Presidente da NYSE explica como algoritmos de IA agora ditam o ritmo do mercado — humanos deixaram de ser os principais executores.</p>
           <div class="persp-read-link"><span class="persp-arrow">›</span> Ler matéria (Yahoo Finance)</div>
@@ -39,11 +39,11 @@
         <a href="http://www.broker-forex.eu/pt/IA-psicologia-do-trading.php"
           target="_blank" rel="noopener noreferrer" class="persp-card">
           <div class="persp-img-wrap">
-            <img src="/assets/editorial-ai-psychology.jpg"
+            <img src="/assets/hologram_2.png"
               alt="Como a IA está revolucionando a psicologia do trader"
               class="persp-img" loading="lazy" />
           </div>
-          <span class="persp-card-tag persp-tag-primary">Psicologia</span>
+          <span class="persp-card-tag text-muted-foreground">Psicologia</span>
           <h5 class="persp-card-title">Como a IA está revolucionando a psicologia do trader</h5>
           <p class="persp-card-desc">Estudo sobre como sistemas inteligentes reduzem viés emocional, FOMO e revenge trading — devolvendo disciplina à mesa de operações.</p>
           <div class="persp-read-link"><span class="persp-arrow">›</span> Acessar estudo (Broker-Forex)</div>
@@ -52,11 +52,11 @@
         <a href="https://www.gov.br/investidor/pt-br/penso-logo-invisto/a-psicologia-da-inteligencia-artificial-no-mercado-financeiro-beneficios-e-desafios-em-um-mundo-automatizado"
           target="_blank" rel="noopener noreferrer" class="persp-card">
           <div class="persp-img-wrap">
-            <img src="/assets/editorial-ai-risk.jpg"
+            <img src="/assets/hologram_3.png"
               alt="IA no mercado financeiro: gerenciamento de risco automatizado"
               class="persp-img" loading="lazy" />
           </div>
-          <span class="persp-card-tag persp-tag-muted">Gov.br · CVM</span>
+          <span class="persp-card-tag text-muted-foreground">Smart Money</span>
           <h5 class="persp-card-title">IA no mercado financeiro: gerenciamento de risco automatizado</h5>
           <p class="persp-card-desc">Portal do Investidor analisa benefícios e desafios da IA na gestão de risco institucional e na proteção do capital do trader varejo.</p>
           <div class="persp-read-link"><span class="persp-arrow">›</span> Ler artigo oficial</div>
@@ -78,19 +78,22 @@
             </p>
           </div>
 
-          <div class="library-grid">
-
-            <a v-for="item in libraryItems" :key="item.href"
-              :href="item.href" target="_blank" rel="noopener noreferrer" class="lib-card">
-              <div class="lib-card-top">
-                <span class="lib-category">{{ item.category }}</span>
-                <span class="lib-source">{{ item.source }}</span>
-              </div>
-              <h6 class="lib-title">{{ item.title }}</h6>
-              <p class="lib-desc">{{ item.desc }}</p>
-              <span class="lib-link"><span class="lib-arrow">›</span> Ler estudo</span>
-            </a>
-
+          <div class="library-slider-container">
+            <div class="library-slider">
+              <a v-for="item in libraryItems" :key="item.href"
+                :href="item.href" target="_blank" rel="noopener noreferrer" class="lib-card">
+                <div class="lib-card-top">
+                  <span class="lib-category">{{ item.category }}</span>
+                  <span class="lib-source">{{ item.source }}</span>
+                </div>
+                <h6 class="lib-title">{{ item.title }}</h6>
+                <p class="lib-desc">{{ item.desc }}</p>
+                <span class="lib-link"><span class="lib-arrow">›</span> Ler estudo</span>
+              </a>
+            </div>
+            <!-- Gradient fades for slider edges -->
+            <div class="slider-fade slider-fade-left"></div>
+            <div class="slider-fade slider-fade-right"></div>
           </div>
         </div>
       </transition>
@@ -112,7 +115,18 @@ export default {
     const isOpen = ref(false)
     const triggers = []
 
+    const handleMouseMove = (e) => {
+      for (const card of document.querySelectorAll('.persp-card, .lib-card')) {
+        const rect = card.getBoundingClientRect()
+        const x = e.clientX - rect.left
+        const y = e.clientY - rect.top
+        card.style.setProperty('--mouse-x', `${x}px`)
+        card.style.setProperty('--mouse-y', `${y}px`)
+      }
+    }
+
     onMounted(() => {
+      window.addEventListener('mousemove', handleMouseMove)
       const headerTween = gsap.fromTo(
         ['.persp-tag', '.persp-heading', '.persp-explore-btn'],
         { opacity: 0, y: 55 },
@@ -151,6 +165,7 @@ export default {
     })
 
     onUnmounted(() => {
+      window.removeEventListener('mousemove', handleMouseMove)
       triggers.forEach(t => t && t.kill())
     })
 
@@ -240,11 +255,13 @@ export default {
 /* ── Section ──────────────────────────────────── */
 .persp-section {
   position: relative;
-  padding: 5rem 40px;
-  border-top: 1px solid rgba(59, 130, 246, 0.12);
+  padding: 6rem 40px;
+  background: linear-gradient(180deg, #0A1329 0%, #0A1329 85%, #030712 100%);
+  border-top: none;
 }
-@media (min-width: 640px)  { .persp-section { padding: 7rem 40px; } }
-@media (min-width: 1024px) { .persp-section { padding: 7rem 40px; } }
+@media (min-width: 768px) { 
+  .persp-section { padding: 8rem 40px; } 
+}
 
 .persp-inner { width: 100%; }
 
@@ -280,12 +297,12 @@ export default {
 .persp-heading {
   font-family: var(--font-sans);
   font-size: clamp(2rem, 4vw, 3.75rem);
-  font-weight: 700;
+  font-weight: 300;
   letter-spacing: -0.02em;
   line-height: 1.05;
   color: hsl(var(--foreground));
 }
-.persp-heading-em { font-style: italic; color: hsl(var(--primary)); }
+.persp-heading-em { font-style: italic; font-weight: 400; color: hsl(var(--primary)); }
 
 /* Toggle button */
 .persp-explore-btn {
@@ -322,13 +339,51 @@ export default {
   .persp-grid { grid-template-columns: repeat(3, 1fr); gap: 3rem; }
 }
 
-.persp-card { display: flex; flex-direction: column; text-decoration: none; cursor: pointer; }
+.persp-card { 
+  display: flex; 
+  flex-direction: column; 
+  text-decoration: none; 
+  cursor: pointer; 
+  background: rgba(255,255,255,.015);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255,255,255,.03);
+  border-radius: 24px;
+  padding: 1.25rem;
+  transition: border-color 0.4s ease, transform 0.4s ease, background 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.persp-card::before, .lib-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(400px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(37, 99, 235, 0.2), transparent 40%);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.persp-card:hover::before, .lib-card:hover::before {
+  opacity: 1;
+}
+
+.persp-card:hover {
+  border-color: rgba(37,99,235,.3);
+  background: rgba(255,255,255,.025);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255,255,255,0.05);
+}
 
 .persp-img-wrap {
   aspect-ratio: 16 / 9;
   overflow: hidden;
   background-color: rgba(30, 41, 59, 0.6);
-  margin-bottom: 1.75rem;
+  margin-bottom: 2rem;
+  border-radius: 12px;
 }
 .persp-img {
   width: 100%; height: 100%; object-fit: cover; display: block;
@@ -338,19 +393,16 @@ export default {
 .persp-card:hover .persp-img { filter: grayscale(0%); transform: scale(1.05); }
 
 .persp-card-tag {
-  font-size: 10px; font-weight: 700; letter-spacing: 0.28em;
-  text-transform: uppercase; margin-bottom: 0.75rem; display: block;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.28em;
+  text-transform: uppercase; margin-bottom: 0.85rem; display: block;
 }
-.persp-tag-amber   { color: #fbbf24; }
-.persp-tag-primary { color: hsl(var(--primary)); }
-.persp-tag-muted   { color: hsl(var(--muted-foreground)); }
 
 .persp-card-title {
-  font-family: var(--font-sans); font-size: 1.25rem; font-weight: 500;
-  color: hsl(var(--foreground)); margin-bottom: 1rem; line-height: 1.3;
-  transition: color 0.2s;
+  font-family: var(--font-sans); font-size: 1.2rem; font-weight: 300;
+  color: rgba(255,255,255,0.9); margin-bottom: 1rem; line-height: 1.4;
+  transition: color 0.3s;
 }
-@media (min-width: 640px) { .persp-card-title { font-size: 1.5rem; } }
+@media (min-width: 640px) { .persp-card-title { font-size: 1.35rem; } }
 .persp-card:hover .persp-card-title { color: hsl(var(--primary)); }
 
 .persp-card-desc {
@@ -394,27 +446,64 @@ export default {
   font-weight: 300; line-height: 1.65;
 }
 
-/* Library card grid — separated by 1px borders */
-.library-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1px;
-  background-color: rgba(59, 130, 246, 0.1);
-  border: 1px solid rgba(59, 130, 246, 0.1);
+/* Library card slider */
+.library-slider-container {
+  position: relative;
+  width: 100%;
 }
-@media (min-width: 640px)  { .library-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 1024px) { .library-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.library-slider {
+  display: flex;
+  overflow-x: auto;
+  gap: 1.5rem;
+  padding-bottom: 2rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.library-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.slider-fade {
+  position: absolute;
+  top: 0; bottom: 2rem; width: 60px;
+  pointer-events: none;
+}
+.slider-fade-left {
+  left: 0;
+  background: linear-gradient(to right, #0A1329, transparent);
+}
+.slider-fade-right {
+  right: 0;
+  background: linear-gradient(to left, #030712, transparent);
+}
 
 .lib-card {
+  min-width: 300px;
+  max-width: 350px;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
   flex-direction: column;
   padding: 1.5rem 1.75rem;
-  background-color: hsl(var(--background));
+  background: rgba(255,255,255,.015);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   text-decoration: none;
-  transition: background-color 0.2s;
+  transition: background-color 0.4s ease, border-color 0.4s ease, transform 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
 }
-@media (min-width: 640px) { .lib-card { padding: 1.75rem; } }
-.lib-card:hover { background-color: rgba(30, 41, 59, 0.4); }
+@media (min-width: 640px) { .lib-card { padding: 1.75rem; min-width: 340px; } }
+.lib-card:hover {
+  background: rgba(255,255,255,.025);
+  transform: translateY(-2px);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
+}
 
 .lib-card-top {
   display: flex; align-items: center; justify-content: space-between;

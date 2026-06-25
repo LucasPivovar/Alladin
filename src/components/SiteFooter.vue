@@ -58,7 +58,7 @@ export default {
 <style scoped>
 .site-footer {
   background: #02050c;
-  border-top: 1px solid rgba(59, 130, 246, 0.08);
+  border-top: none;
   padding: 48px 80px;
   position: relative;
   overflow: hidden;

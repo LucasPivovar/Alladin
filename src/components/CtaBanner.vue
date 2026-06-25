@@ -1,8 +1,7 @@
 <template>
   <section class="cta-section">
-    <!-- Decorative blurred orbs -->
-    <div class="orb orb-top-right"></div>
-    <div class="orb orb-bottom-left"></div>
+    <!-- Central Glow Background -->
+    <div class="glow-bg"></div>
 
     <div class="cta-inner">
       <!-- Heading -->
@@ -94,29 +93,20 @@ export default {
   position: relative;
   padding: 6rem 40px;
   overflow: hidden;
-  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 40%, #3b82f6 100%);
+  background: linear-gradient(180deg, #071126 0%, #0B1730 60%, #02050c 100%);
+}
+@media (min-width: 768px) {
+  .cta-section { padding: 8rem 40px; }
 }
 
-/* Decorative orbs */
-.orb {
-  pointer-events: none;
+/* Central Glow */
+.glow-bg {
   position: absolute;
-  width: 28rem;
-  height: 28rem;
-  border-radius: 9999px;
-  filter: blur(80px);
-}
-
-.orb-top-right {
-  top: -8rem;
-  right: -8rem;
-  background: rgba(255, 255, 255, 0.12);
-}
-
-.orb-bottom-left {
-  bottom: -10rem;
-  left: -8rem;
-  background: rgba(255, 255, 255, 0.06);
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(37, 99, 235, 0.25), transparent 70%);
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, black 15%, black 85%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0%, black 15%, black 85%, transparent 100%);
 }
 
 /* Inner content */
@@ -124,23 +114,29 @@ export default {
   position: relative;
   width: 100%;
   max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 /* Heading */
 .cta-heading {
   font-family: var(--font-sans);
   font-size: clamp(2.5rem, 6vw, 4.5rem);
-  font-weight: 900;
-  line-height: 1.05;
-  color: #ffffff;
+  font-weight: 300;
+  line-height: 1.1;
+  color: rgba(255, 255, 255, 0.9);
   max-width: 850px;
-  margin-bottom: 1.75rem;
+  margin: 0 auto 1.75rem auto;
   letter-spacing: -0.02em;
 }
 
 .cta-heading em {
-  font-style: italic;
-  font-weight: 900;
+  font-style: normal;
+  font-weight: 400;
+  color: hsl(var(--primary));
 }
 
 .md-br {
@@ -161,7 +157,7 @@ export default {
   color: rgba(255, 255, 255, 0.85);
   max-width: 580px;
   line-height: 1.65;
-  margin-bottom: 2.5rem;
+  margin: 0 auto 2.5rem auto;
 }
 
 /* CTA Button */
@@ -179,13 +175,29 @@ export default {
   letter-spacing: 0.24em;
   text-decoration: none;
   border-radius: 0;
-  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-btn::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -150%; width: 100%; height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+  transform: skewX(-20deg);
+  transition: all 0.6s ease;
+}
+
+.cta-btn:hover::after {
+  left: 150%;
 }
 
 .cta-btn:hover {
   background: hsl(var(--background) / 0.85);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
 .cta-btn svg {
@@ -203,8 +215,9 @@ export default {
   gap: 1.5rem 3rem;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   padding-top: 2.5rem;
-  margin-top: 3.5rem;
+  margin: 3.5rem auto 0 auto;
   max-width: 850px;
+  width: 100%;
 }
 
 @media (min-width: 640px) {
@@ -219,7 +232,7 @@ export default {
 }
 
 .stat-item {
-  text-align: left;
+  text-align: center;
 }
 
 .stat-span {

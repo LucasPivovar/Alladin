@@ -6,6 +6,10 @@
         <!-- Left: label -->
         <div class="faq-label-col">
           <p class="faq-label">Perguntas Frequentes</p>
+          <h3 class="faq-heading">
+            Dúvidas sobre a operação.<br />
+            <em class="faq-heading-em">Respostas claras.</em>
+          </h3>
         </div>
 
         <!-- Right: accordion -->
@@ -29,7 +33,7 @@
             </button>
 
             <div class="faq-body" :style="openIdx === idx
-              ? 'max-height: 600px; opacity: 1; padding-bottom: 1.5rem;'
+              ? 'max-height: 600px; opacity: 1; padding-bottom: 24px;'
               : 'max-height: 0; opacity: 0; padding-bottom: 0;'">
               <p class="faq-answer">{{ item.answer }}</p>
             </div>
@@ -57,7 +61,7 @@ export default {
 
     onMounted(() => {
       const labelTween = gsap.fromTo(
-        '.faq-label',
+        '.faq-heading',
         { opacity: 0, y: 45 },
         {
           opacity: 1,
@@ -147,12 +151,13 @@ export default {
 <style scoped>
 /* ── Section ──────────────────────────── */
 .faq-section {
-  background-color: #050608;
-  border-top: 1px solid rgba(59, 130, 246, 0.1);
-  padding: 5rem 40px;
+  background: linear-gradient(180deg, #030712 0%, #030712 85%, #071126 100%);
+  border-top: none;
+  padding: 6rem 40px;
 }
-@media (min-width: 640px)  { .faq-section { padding: 7rem 40px; } }
-@media (min-width: 1024px) { .faq-section { padding: 7rem 40px; } }
+@media (min-width: 768px) { 
+  .faq-section { padding: 8rem 40px; } 
+}
 
 .faq-inner { width: 100%; }
 
@@ -172,25 +177,50 @@ export default {
 
 /* ── Left label ───────────────────────── */
 .faq-label-col {
-  padding-top: 1.375rem; /* aligns with first question top padding */
+  padding-top: 0.5rem;
 }
 
-.faq-label {
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  color: hsl(var(--muted-foreground));
-  line-height: 1;
+.faq-heading {
+  font-family: var(--font-sans);
+  font-size: clamp(2rem, 4vw, 3.75rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 1.5rem;
+}
+
+.faq-heading-em {
+  font-style: italic;
+  font-weight: 400;
+  color: hsl(var(--primary));
 }
 
 /* ── Accordion ────────────────────────── */
 .faq-accordion {
-  border-top: 1px solid rgba(59, 130, 246, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .faq-item {
-  border-bottom: 1px solid rgba(59, 130, 246, 0.12);
+  background: rgba(7, 17, 38, 0.6);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faq-item:hover {
+  border-color: rgba(59, 130, 246, 0.3);
+  background: rgba(7, 17, 38, 0.8);
+}
+
+.faq-item--open {
+  border-color: rgba(34, 211, 238, 0.5);
+  box-shadow: 0 0 30px -5px rgba(34, 211, 238, 0.15), inset 0 0 10px rgba(34, 211, 238, 0.05);
+  background: rgba(34, 211, 238, 0.03);
 }
 
 /* Trigger button */
@@ -200,7 +230,7 @@ export default {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1.25rem 0;
+  padding: 24px;
   background: none;
   border: none;
   cursor: pointer;
@@ -210,7 +240,7 @@ export default {
 .faq-question {
   font-family: var(--font-sans);
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 400;
   color: hsl(var(--foreground));
   line-height: 1.5;
   flex: 1;
@@ -236,6 +266,7 @@ export default {
 
 /* Answer body */
 .faq-body {
+  padding: 0 24px;
   overflow: hidden;
   transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
               opacity 0.3s ease,
